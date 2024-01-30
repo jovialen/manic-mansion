@@ -14,6 +14,8 @@ def main():
 
     board = GameBoard(SIZE[0], SIZE[1], SAFE_ZONE_WIDTH)
     board.add_obstacle(3)
+    board.add_ghost(1)
+    board.add_sheep(3)
 
     while poll_events():
         board.draw(window)
