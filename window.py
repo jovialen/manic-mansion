@@ -11,6 +11,7 @@ def poll_events():
 class Window:
     def __init__(self, title, size, fps=60.0, clear_color="white"):
         pygame.display.set_caption(title)
+        self.size = size
         self.window = pygame.display.set_mode(size)
         self.fps = fps
         self.clock = pygame.time.Clock()
@@ -22,5 +23,11 @@ class Window:
         self.window.fill(self.clear_color)
         self.dt = self.clock.tick(self.fps) / 1000
 
+    def get_size(self):
+        return self.size
+
     def get_delta_time(self):
         return self.dt
+
+    def get_surface(self):
+        return self.window
