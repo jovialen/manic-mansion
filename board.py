@@ -1,6 +1,8 @@
 import pygame
+from random import randint
 
 TILE_EMPTY = 0
+TILE_OBSTACLE = 1
 
 TILE_COLOR = ["white", "gray"]
 
@@ -9,7 +11,20 @@ class GameBoard:
     def __init__(self, width, height, safe_zone_width):
         self.size = (width, height)
         self.safe_zone_width = safe_zone_width
-        self.board = [[0] * height] * width
+        self.board = [[TILE_EMPTY for _ in range(height)] for _ in range(width)]
+
+    def __random_danger__(self):
+        x0 = self.safe_zone_width + 1
+        x1 = self.size[0] - self.safe_zone_width - 1
+        x, y = randint(x0, x1), randint(1, self.size[1] - 1)
+        while self.board[x][y] != TILE_EMPTY:
+            x, y = randint(x0, x1), randint(1, self.size[1] - 1)
+        return x, y
+
+    def add_obstacle(self, count=1):
+        for _ in range(count):
+            x, y = self.__random_danger__()
+            self.board[x][y] = TILE_OBSTACLE
 
     def draw(self, window):
         surface = window.get_surface()

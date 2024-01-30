@@ -11,7 +11,9 @@ RESOLUTION = (600, 400)
 def main():
     pygame.init()
     window = Window("Manic Mansion", RESOLUTION)
+
     board = GameBoard(SIZE[0], SIZE[1], SAFE_ZONE_WIDTH)
+    board.add_obstacle(3)
 
     while poll_events():
         board.draw(window)
