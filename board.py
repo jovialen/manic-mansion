@@ -76,6 +76,18 @@ class GameBoard:
             return True
         self.move_timer = 0
 
+        for i in range(len(self.ghosts)):
+            x, y, mx, my = self.ghosts[i]
+            if self.board[x][y] != TILE_OBSTACLE:
+                self.board[x][y] = TILE_EMPTY
+            nx, ny = x + mx, y + my
+            if ny == 0 or ny == self.size[1] - 1:
+                my *= -1
+            if nx == self.safe_zone_width + 1 or nx == self.size[0] - self.safe_zone_width - 1:
+                mx *= -1
+            self.ghosts[i] = (nx, ny, mx, my)
+            self.board[nx][ny] = self.board[nx][ny] or TILE_GHOST
+
         keys = pygame.key.get_pressed()
         mx, my = 0, 0
         if keys[pygame.K_w]:

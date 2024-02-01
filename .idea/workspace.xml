@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add ghost and sheep">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add player and player movement">
       <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manicmansion.py" beforeDir="false" afterPath="$PROJECT_DIR$/manicmansion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706620853472</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: add player and player movement">
+      <option name="closed" value="true" />
+      <created>1706772874863</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706772874863</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -129,6 +135,7 @@
     <MESSAGE value="feat: create board.py" />
     <MESSAGE value="feat: add obstacles" />
     <MESSAGE value="feat: add ghost and sheep" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add ghost and sheep" />
+    <MESSAGE value="feat: add player and player movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add player and player movement" />
   </component>
 </project>
