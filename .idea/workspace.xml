@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add moving ghosts">
+    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add picking up sheep">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
     </list>
@@ -136,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706773149324</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: add picking up sheep">
+      <option name="closed" value="true" />
+      <created>1706774276017</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706774276017</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -146,6 +154,7 @@
     <MESSAGE value="feat: add ghost and sheep" />
     <MESSAGE value="feat: add player and player movement" />
     <MESSAGE value="feat: add moving ghosts" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add moving ghosts" />
+    <MESSAGE value="feat: add picking up sheep" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add picking up sheep" />
   </component>
 </project>

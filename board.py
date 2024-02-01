@@ -6,8 +6,9 @@ TILE_OBSTACLE = 1
 TILE_GHOST = 2
 TILE_SHEEP = 3
 TILE_PLAYER = 4
+TILE_SAFE_SHEEP = 5
 
-TILE_COLOR = ["white", "gray", "red", "blue", "green"]
+TILE_COLOR = ["white", "gray", "red", "blue", "green", "light blue"]
 
 
 class GameBoard:
@@ -16,16 +17,20 @@ class GameBoard:
         self.safe_zone_width = safe_zone_width
         self.board = [[TILE_EMPTY for _ in range(height)] for _ in range(width)]
         self.ghosts = []
-        self.has_sheep = False
 
         self.add_obstacle(3)
         self.add_ghost(1)
         self.add_sheep(3)
 
         self.player = self.__random_safe__(False)
-        self.move_timer = 0
-        self.is_player_move = True
         self.board[self.player[0]][self.player[1]] = TILE_PLAYER
+        self.has_sheep = False
+        self.is_player_move = True
+
+        self.move_timer = 0
+        self.points = 0
+
+        self.font = pygame.font.SysFont(pygame.font.get_default_font(), 24)
 
     def __random_danger__(self):
         x0 = self.safe_zone_width + 1
@@ -62,10 +67,17 @@ class GameBoard:
             x, y = self.__random_safe__(True)
             self.board[x][y] = TILE_SHEEP
 
+    def add_safe_sheep(self, count=1):
+        for _ in range(count):
+            x, y = self.__random_safe__(False)
+            self.board[x][y] = TILE_SAFE_SHEEP
+
     def __level_up__(self):
         self.add_sheep()
         self.add_ghost()
         self.add_obstacle()
+        self.add_safe_sheep()
+        self.points += 1
 
     def move_player(self, mx, my):
         x, y = self.player
@@ -94,7 +106,7 @@ class GameBoard:
             nx, ny = x + mx, y + my
             if ny == 0 or ny == self.size[1] - 1:
                 my *= -1
-            if nx <= self.safe_zone_width + 1 or nx >= self.size[0] - self.safe_zone_width - 1:
+            if nx <= self.safe_zone_width + 1 or nx >= self.size[0] - self.safe_zone_width - 2:
                 mx *= -1
             self.ghosts[i] = (nx, ny, mx, my)
             self.board[nx][ny] = self.board[nx][ny] or TILE_GHOST
@@ -137,8 +149,10 @@ class GameBoard:
         for x, column in enumerate(self.board):
             for y, tile in enumerate(column):
                 color = TILE_COLOR[tile]
-                if tile == TILE_EMPTY and (x <= self.safe_zone_width or x >= width - self.safe_zone_width):
+                if tile == TILE_EMPTY and (x <= self.safe_zone_width or x >= width - self.safe_zone_width - 1):
                     color = "#efefef"
 
                 rect = (x * tile_width, y * tile_height, tile_width, tile_height)
                 pygame.draw.rect(surface, color, rect)
+        img = self.font.render("Points: " + str(self.points), True, "black")
+        surface.blit(img, (10, window_height - 24))
