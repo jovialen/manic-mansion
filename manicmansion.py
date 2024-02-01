@@ -1,4 +1,4 @@
-from window import Window, poll_events
+from window import Window
 from board import GameBoard
 import pygame
 
@@ -15,7 +15,7 @@ def main():
     board = GameBoard(SIZE[0], SIZE[1], SAFE_ZONE_WIDTH)
 
     should_continue = True
-    while poll_events() and should_continue:
+    while window.poll_events() and should_continue:
         should_continue = board.update(window.get_delta_time())
         board.draw(window)
         window.update()
