@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add window resizing">
-      <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
-    </list>
+    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="fix: safe area rendering artifacts" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706775334304</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix: safe area rendering artifacts">
+      <option name="closed" value="true" />
+      <created>1706775829328</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706775829328</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -172,6 +178,7 @@
     <MESSAGE value="feat: add picking up sheep" />
     <MESSAGE value="feat: add points" />
     <MESSAGE value="feat: add window resizing" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add window resizing" />
+    <MESSAGE value="fix: safe area rendering artifacts" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: safe area rendering artifacts" />
   </component>
 </project>

@@ -146,8 +146,9 @@ class GameBoard:
         width, height = self.size
         tile_width = window_width / width
         tile_height = window_height / height
-        pygame.draw.rect(surface, "#efefef", (0, 0, tile_width * (self.safe_zone_width + 1), window_height))
-        pygame.draw.rect(surface, "#efefef", (window_width - tile_width * (self.safe_zone_width + 1), 0, tile_width * (self.safe_zone_width + 1), window_height))
+        size = tile_width * (self.safe_zone_width + 1), window_height
+        pygame.draw.rect(surface, "#efefef", ((0, 0), size))
+        pygame.draw.rect(surface, "#efefef", ((window_width - size[0], 0), size))
         for x, column in enumerate(self.board):
             for y, tile in enumerate(column):
                 color = TILE_COLOR[tile]
