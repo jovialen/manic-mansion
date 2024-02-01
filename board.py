@@ -16,6 +16,7 @@ class GameBoard:
         self.safe_zone_width = safe_zone_width
         self.board = [[TILE_EMPTY for _ in range(height)] for _ in range(width)]
         self.ghosts = []
+        self.has_sheep = False
 
         self.add_obstacle(3)
         self.add_ghost(1)
@@ -23,6 +24,7 @@ class GameBoard:
 
         self.player = self.__random_safe__(False)
         self.move_timer = 0
+        self.is_player_move = True
         self.board[self.player[0]][self.player[1]] = TILE_PLAYER
 
     def __random_danger__(self):
@@ -51,6 +53,7 @@ class GameBoard:
     def add_ghost(self, count=1):
         for _ in range(count):
             x, y = self.__random_danger__()
+            y = max(min(y, self.size[1] - 2), 1)  # Don't allow spawning on edges
             self.board[x][y] = TILE_GHOST
             self.ghosts.append((x, y, choice([-1, 1]), choice([-1, 1])))
 
@@ -59,23 +62,31 @@ class GameBoard:
             x, y = self.__random_safe__(True)
             self.board[x][y] = TILE_SHEEP
 
+    def __level_up__(self):
+        self.add_sheep()
+        self.add_ghost()
+        self.add_obstacle()
+
     def move_player(self, mx, my):
         x, y = self.player
         nx, ny = x + mx, y + my
-        if self.board[nx][ny] == TILE_OBSTACLE:
+        if nx < 0 or nx >= self.size[0] or ny < 0 or ny >= self.size[1]:
             return False
-        elif self.board[nx][ny] == TILE_GHOST:
-            return True
+        elif self.board[nx][ny] == TILE_OBSTACLE:
+            return False
+        elif self.board[nx][ny] == TILE_SHEEP:
+            if self.has_sheep:
+                return False
+            self.has_sheep = True
+        elif nx <= self.safe_zone_width and self.has_sheep:
+            self.has_sheep = False
+            self.__level_up__()
         self.board[x][y] = TILE_EMPTY
         self.board[nx][ny] = TILE_PLAYER
         self.player = (nx, ny)
+        return any(map(lambda ghost: ghost[0] == nx and ghost[1] == ny, self.ghosts))
 
-    def update(self, dt):
-        self.move_timer += dt
-        if self.move_timer < 0.1:
-            return True
-        self.move_timer = 0
-
+    def __update_ghosts__(self):
         for i in range(len(self.ghosts)):
             x, y, mx, my = self.ghosts[i]
             if self.board[x][y] != TILE_OBSTACLE:
@@ -83,11 +94,12 @@ class GameBoard:
             nx, ny = x + mx, y + my
             if ny == 0 or ny == self.size[1] - 1:
                 my *= -1
-            if nx == self.safe_zone_width + 1 or nx == self.size[0] - self.safe_zone_width - 1:
+            if nx <= self.safe_zone_width + 1 or nx >= self.size[0] - self.safe_zone_width - 1:
                 mx *= -1
             self.ghosts[i] = (nx, ny, mx, my)
             self.board[nx][ny] = self.board[nx][ny] or TILE_GHOST
 
+    def __update_player__(self):
         keys = pygame.key.get_pressed()
         mx, my = 0, 0
         if keys[pygame.K_w]:
@@ -100,6 +112,21 @@ class GameBoard:
             mx = -1
         died = self.move_player(mx, my)
         return not died
+
+    def update(self, dt):
+        self.move_timer += dt
+        if self.move_timer < 0.1:
+            return True
+        self.move_timer = 0
+
+        self.__update_ghosts__()
+
+        self.is_player_move = not self.is_player_move
+        self.is_player_move |= not self.has_sheep
+        if self.is_player_move:
+            return self.__update_player__()
+        else:
+            return True
 
     def draw(self, window):
         surface = window.get_surface()
