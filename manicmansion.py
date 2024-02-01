@@ -13,11 +13,10 @@ def main():
     window = Window("Manic Mansion", RESOLUTION)
 
     board = GameBoard(SIZE[0], SIZE[1], SAFE_ZONE_WIDTH)
-    board.add_obstacle(3)
-    board.add_ghost(1)
-    board.add_sheep(3)
 
-    while poll_events():
+    should_continue = True
+    while poll_events() and should_continue:
+        should_continue = board.update(window.get_delta_time())
         board.draw(window)
         window.update()
 

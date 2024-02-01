@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add obstacles">
+    <list default="true" id="55143704-bb7f-4515-b409-6874005fffda" name="Changes" comment="feat: add ghost and sheep">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manicmansion.py" beforeDir="false" afterPath="$PROJECT_DIR$/manicmansion.py" afterDir="false" />
@@ -36,18 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.board.executor": "Run",
-    "Python.manicmansion.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/nicol/Development/Python/ManicMansion/manicmansion.py",
-    "settings.editor.selected.configurable": "settings.qodana"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.board.executor&quot;: &quot;Run&quot;,
+    &quot;Python.manicmansion.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicol/Development/Python/ManicMansion/manicmansion.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.qodana&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="manicmansion" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="ManicMansion" />
@@ -113,13 +113,22 @@
       <option name="project" value="LOCAL" />
       <updated>1706619384137</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: add ghost and sheep">
+      <option name="closed" value="true" />
+      <created>1706620853472</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706620853472</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: create window.py" />
     <MESSAGE value="feat: create board.py" />
     <MESSAGE value="feat: add obstacles" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add obstacles" />
+    <MESSAGE value="feat: add ghost and sheep" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add ghost and sheep" />
   </component>
 </project>
